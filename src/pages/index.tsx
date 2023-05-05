@@ -1,12 +1,13 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { TwitterIcon } from "@/components/atoms/Twitter";
 import { DiscordIcon } from "@/components/atoms/Discord";
 import DocumentHead from "@/components/molecules/DocumentHead";
 import { motion } from "framer-motion";
+import { HashLoader } from 'react-spinners';
 
 const Home = () => {
-
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const videoRef: React.RefObject<HTMLVideoElement> = useRef(null);
 
   const OPACITY_ANIMATION = {
@@ -29,6 +30,11 @@ const Home = () => {
           console.error('Video playback failed:', error);
         });
     }
+    setIsLoading(false);
+  } else {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
   }
 }, []);
 
@@ -49,7 +55,13 @@ const Home = () => {
       </div>
 
       {/* main section */}
-      <motion.div 
+      <div className="w-[250px] h-[250px] sm:w-[500px] sm:h-[500px]">
+      { isLoading ? (
+        <div className="h-full flex justify-center items-center">
+          <HashLoader color="#FDDC68" />
+        </div>
+      ) : (
+        <motion.div 
       {...OPACITY_ANIMATION}
       className="flex flex-col items-center justify-center gap-1">
         <video
@@ -60,9 +72,11 @@ const Home = () => {
           loop
           playsInline
           preload="metadata"
-          className="w-[250px] h-[250px] sm:w-[500px] sm:h-[500px]"
         />
       </motion.div>
+      )}
+      </div>
+      
 
       {/* socials */}
       <div className="flex items-center gap-3">
