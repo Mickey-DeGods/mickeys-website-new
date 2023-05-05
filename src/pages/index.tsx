@@ -132,13 +132,13 @@ const Home = () => {
       <div className="flex flex-col items-center justify-center gap-1">
         <video
           ref={videoRef}
-          src="/assets/fries.mp4"
+          src="/assets/fries.mov"
           autoPlay
           muted
           loop
           playsInline
           preload="metadata"
-          className="w-[250px] h-[250px] sm:w-[500px] sm:h-[500px] lg:w-[700px] lg:h-[700px] border border-red-500"
+          className="w-[250px] h-[250px] sm:w-[500px] sm:h-[500px]"
         />
       </div>
 
