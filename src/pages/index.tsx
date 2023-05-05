@@ -1,100 +1,20 @@
 import { useEffect, useRef } from "react";
-import * as THREE from "three";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import Image from "next/image";
 import { TwitterIcon } from "@/components/atoms/Twitter";
 import { DiscordIcon } from "@/components/atoms/Discord";
 import DocumentHead from "@/components/molecules/DocumentHead";
+import { motion } from "framer-motion";
 
 const Home = () => {
-  // let scene: THREE.Scene,
-  //   camera: THREE.PerspectiveCamera,
-  //   renderer: any,
-  //   controls: OrbitControls;
-
-  // const containerRef = useRef<HTMLDivElement | null>(null);
-
-  // const init3dRender = () => {
-  //   scene = new THREE.Scene();
-  //   // scene.background = new THREE.Color(0xdddddd);
-
-  //   camera = new THREE.PerspectiveCamera(
-  //     40,
-  //     window.innerWidth / window.innerHeight,
-  //     0.1,
-  //     1000
-  //   );
-  //   camera.rotation.y = (45 / 180) * Math.PI;
-  //   camera.position.x = 100;
-  //   camera.position.y = 50;
-  //   camera.position.z = 200;
-
-  //   renderer = new THREE.WebGLRenderer({ antialias: true });
-  //   renderer.setSize(window.innerWidth, window.innerHeight);
-  //   containerRef.current &&
-  //     containerRef.current.appendChild(renderer.domElement);
-
-  //   controls = new OrbitControls(camera, renderer.domElement);
-
-  //   let hlight = new THREE.AmbientLight("#ffffff", 1);
-  //   scene.add(hlight);
-
-  //   let directionalLight = new THREE.DirectionalLight(0xffffff, 20);
-
-  //   directionalLight.position.set(20, 1, 0);
-  //   directionalLight.castShadow = true;
-  //   scene.add(directionalLight);
-
-  //   let light = new THREE.PointLight(0xc4c4c4, 1);
-  //   light.position.set(0, 300, 500);
-  //   scene.add(light);
-
-  //   let light2 = new THREE.PointLight(0xc4c4c4, 1);
-  //   light2.position.set(500, 100, 0);
-  //   scene.add(light2);
-
-  //   let light3 = new THREE.PointLight(0xc4c4c4, 1);
-  //   light3.position.set(0, 100, -500);
-  //   scene.add(light3);
-
-  //   let light4 = new THREE.PointLight(0xc4c4c4, 1);
-  //   light4.position.set(-500, 300, 0);
-  //   scene.add(light4);
-
-  //   let loader = new GLTFLoader();
-  //   loader.load(
-  //     "/assets/fries.glb",
-  //     function (gltf) {
-  //       gltf.scene.scale.set(200, 200, 200);
-  //       scene.add(gltf.scene);
-  //       renderer.render(scene, camera);
-  //     },
-  //     undefined,
-  //     function (error) {
-  //       console.log(error);
-  //     }
-  //   );
-  // };
-
-  // const animate = () => {
-  //   requestAnimationFrame(animate);
-  //   controls.update();
-  //   renderer.render(scene, camera);
-  // };
-
-  // useEffect(() => {
-  //   if (!containerRef.current) return; // Check if the container ref is available before initializing
-  //   init3dRender();
-  //   animate();
-  //   return () => {
-  //     controls.dispose();
-  //   };
-  // }, []);
-
-  // return <div className="" ref={containerRef}></div>;
 
   const videoRef: React.RefObject<HTMLVideoElement> = useRef(null);
+
+  const OPACITY_ANIMATION = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
+    transition: { duration: 4}
+  };
 
   useEffect(() => {
   if (videoRef.current) {
@@ -129,7 +49,9 @@ const Home = () => {
       </div>
 
       {/* main section */}
-      <div className="flex flex-col items-center justify-center gap-1">
+      <motion.div 
+      {...OPACITY_ANIMATION}
+      className="flex flex-col items-center justify-center gap-1">
         <video
           ref={videoRef}
           src="/assets/fries.mov"
@@ -140,7 +62,7 @@ const Home = () => {
           preload="metadata"
           className="w-[250px] h-[250px] sm:w-[500px] sm:h-[500px]"
         />
-      </div>
+      </motion.div>
 
       {/* socials */}
       <div className="flex items-center gap-3">
