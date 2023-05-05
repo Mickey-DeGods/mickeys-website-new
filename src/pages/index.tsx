@@ -4,7 +4,7 @@ import { TwitterIcon } from "@/components/atoms/Twitter";
 import { DiscordIcon } from "@/components/atoms/Discord";
 import DocumentHead from "@/components/molecules/DocumentHead";
 import { motion } from "framer-motion";
-import { HashLoader } from 'react-spinners';
+import { PacmanLoader } from 'react-spinners';
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -58,7 +58,7 @@ const Home = () => {
       <div className="w-[250px] h-[250px] sm:w-[500px] sm:h-[500px]">
       { isLoading ? (
         <div className="h-full flex justify-center items-center">
-          <HashLoader color="#FDDC68" />
+          <PacmanLoader color="#FDDC68" />
         </div>
       ) : (
         <motion.div 
