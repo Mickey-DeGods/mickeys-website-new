@@ -111,11 +111,18 @@ const Home = () => {
 
       {/* main section */}
       <div className="flex flex-col items-center justify-center gap-1">
-        <Image
+        {/* <Image
           src="/assets/fries.gif"
           width={400}
           height={400}
           alt="spinning fries gif"
+        /> */}
+        <video
+          src="/assets/fries.mp4"
+          autoPlay
+          muted
+          loop
+          className="background-video w-[700px] h-[700px]"
         />
       </div>
 
