@@ -41,8 +41,8 @@ const Home = () => {
   return (
     <main className="h-screen w-screen flex flex-col items-center justify-between bg-primary">
       <DocumentHead
-        title="Mickey DeGods II: Coming Soon"
-        description="Mickey DeGods II: Coming Soon"
+        title="Mickey DeGods"
+        description="Mickey DeGods: New Website Coming Soon"
         baseUrl="https://mickeydegods.com/"
         favicon="/favicon.ico"
         siteName="Mickey DeGods"
