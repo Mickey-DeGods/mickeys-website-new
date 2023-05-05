@@ -93,6 +93,25 @@ const Home = () => {
   // }, []);
 
   // return <div className="" ref={containerRef}></div>;
+
+  const videoRef: React.RefObject<HTMLVideoElement> = useRef(null);
+
+  useEffect(() => {
+  if (videoRef.current) {
+    const playPromise = videoRef.current.play();
+
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          // Video playback started successfully
+        })
+        .catch((error: Error) => {
+          console.error('Video playback failed:', error);
+        });
+    }
+  }
+}, []);
+
   return (
     <main className="h-screen w-screen flex flex-col items-center justify-between bg-primary">
       <DocumentHead
@@ -111,18 +130,15 @@ const Home = () => {
 
       {/* main section */}
       <div className="flex flex-col items-center justify-center gap-1">
-        {/* <Image
-          src="/assets/fries.gif"
-          width={400}
-          height={400}
-          alt="spinning fries gif"
-        /> */}
         <video
+          ref={videoRef}
           src="/assets/fries.mp4"
           autoPlay
           muted
           loop
-          className="background-video w-[700px] h-[700px]"
+          playsInline
+          preload="metadata"
+          className="w-[250px] h-[250px] sm:w-[500px] sm:h-[500px] lg:w-[700px] lg:h-[700px] border border-red-500"
         />
       </div>
 
