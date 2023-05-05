@@ -94,7 +94,7 @@ const Home = () => {
 
   // return <div className="" ref={containerRef}></div>;
   return (
-    <main className="h-screen w-screen flex flex-col items-center justify-between bg-white">
+    <main className="h-screen w-screen flex flex-col items-center justify-between bg-primary">
       <DocumentHead
         title="Mickey DeGods II: Coming Soon"
         description="Mickey DeGods II: Coming Soon"
@@ -104,40 +104,43 @@ const Home = () => {
         image="/assets/meta.png"
       />
 
-      <div className="w-full flex items-center justify-between py-8 px-12">
-        <Image src="/assets/McDe.png" width={116} height={40} alt="McDe Logo" />
-        <div className="flex items-center gap-8">
-          <a
-            href="https://twitter.com/MickeyDegods"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:scale-110 transition-transform ease-in-out duration-300"
-          >
-            <TwitterIcon fill="black" />
-          </a>
-          <a
-            href="https://discord.gg/UwAUPgzgmZ"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:scale-110 transition-transform ease-in-out duration-300"
-          >
-            <DiscordIcon fill="black" />
-          </a>
-        </div>
+      {/* navbar */}
+      <div className="w-full flex items-center justify-center py-8 px-12">
+        <Image src="/assets/fries-white.png" width={30} height={30} alt="White fries logo" />
       </div>
+
+      {/* main section */}
       <div className="flex flex-col items-center justify-center gap-1">
         <Image
-          src="/assets/fries_icon.png"
-          width={150}
-          height={150}
-          alt="fries icon"
+          src="/assets/fries.gif"
+          width={400}
+          height={400}
+          alt="spinning fries gif"
         />
-        <div className="text-primary font-primaryBold text-lg mt-20">
-          Mickey DeGods
-        </div>
-        <div className="text-primary text-lg">New website summer 2023.</div>
       </div>
-      <div />
+
+      {/* socials */}
+      <div className="flex items-center gap-3">
+        <a
+          href="https://twitter.com/MickeyDegods"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="border border-white/40 w-[60px] h-[60px] flex items-center justify-center
+          hover:scale-110 transition-transform ease-in-out duration-300 cursor-pointer"
+        >
+            <TwitterIcon fill="white" />
+        </a>
+        <a
+          href="https://discord.gg/UwAUPgzgmZ"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="border border-white/40 w-[60px] h-[60px] flex items-center justify-center
+          hover:scale-110 transition-transform ease-in-out duration-300 cursor-pointer"
+        >
+            <DiscordIcon fill="white" />
+        </a>
+      </div>
+      <div className="text-white/40 text-sm py-5">© 2023 Mickey DeGods</div>
     </main>
   );
 };
