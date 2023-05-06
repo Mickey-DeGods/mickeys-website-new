@@ -4,7 +4,7 @@ import { TwitterIcon } from "@/components/atoms/Twitter";
 import { DiscordIcon } from "@/components/atoms/Discord";
 import DocumentHead from "@/components/molecules/DocumentHead";
 import { motion } from "framer-motion";
-import { PacmanLoader } from 'react-spinners';
+import { RingLoader } from 'react-spinners';
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -18,25 +18,25 @@ const Home = () => {
   };
 
   useEffect(() => {
-  if (videoRef.current) {
-    const playPromise = videoRef.current.play();
+    if (videoRef.current) {
+      const playPromise = videoRef.current.play();
 
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          // Video playback started successfully
-        })
-        .catch((error: Error) => {
-          console.error('Video playback failed:', error);
-        });
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            // Video playback started successfully
+            setIsLoading(false); // Set isLoading to false after the video starts playing
+          })
+          .catch((error: Error) => {
+            console.error('Video playback failed:', error);
+          });
+      }
+    } else {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 2500);
     }
-    setIsLoading(false);
-  } else {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-  }
-}, []);
+  }, []);
 
   return (
     <main className="h-screen w-screen flex flex-col items-center justify-between bg-primary">
@@ -58,7 +58,7 @@ const Home = () => {
       <div className="w-[250px] h-[250px] sm:w-[500px] sm:h-[500px]">
       { isLoading ? (
         <div className="h-full flex justify-center items-center">
-          <PacmanLoader color="#FDDC68" />
+          <RingLoader color="#E6CF45" />
         </div>
       ) : (
         <motion.div 
@@ -72,6 +72,7 @@ const Home = () => {
           loop
           playsInline
           preload="metadata"
+          className={`${isLoading ? 'hidden' : ''}`} // Hide the video initially using the 'hidden' class
         />
       </motion.div>
       )}
