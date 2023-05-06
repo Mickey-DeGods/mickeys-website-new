@@ -99,7 +99,7 @@ const Home = () => {
             <DiscordIcon fill="white" />
         </a>
       </div>
-      <div className="text-white/40 text-sm py-5">© 2023 Mickey DeGods</div>
+      <div className="text-white/40 text-sm pb-16 sm:pb-5 pt-5">© 2023 Mickey DeGods</div>
     </main>
   );
 };
