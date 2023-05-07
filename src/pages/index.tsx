@@ -39,7 +39,7 @@ const Home = () => {
   }, []);
 
   return (
-    <main className="h-screen w-screen pb-8 flex flex-col items-center justify-between bg-primary">
+    <main className="h-screen w-screen flex flex-col items-center justify-between bg-primary">
       <DocumentHead
         title="Mickey DeGods"
         description="Mickey DeGods: New Website Coming Soon"
@@ -100,7 +100,7 @@ const Home = () => {
             <DiscordIcon fill="white" />
         </a>
       </div>
-      <div className="text-white/40 text-sm pb-16 sm:pb-5 pt-5">© 2023 Mickey DeGods</div>
+      <div className="text-white/40 text-sm pb-28 sm:pb-5 pt-5">© 2023 Mickey DeGods</div>
     </main>
   );
 };
