@@ -39,7 +39,7 @@ const Home = () => {
   }, []);
 
   return (
-    <main className="h-screen w-screen flex flex-col items-center justify-between bg-primary">
+    <main className="h-screen w-screen flex flex-col items-center bg-primary">
       <DocumentHead
         title="Mickey DeGods"
         description="Mickey DeGods: New Website Coming Soon"
@@ -54,53 +54,49 @@ const Home = () => {
         <Image src="/assets/fries-white.png" width={30} height={30} alt="White fries logo" />
       </div>
 
-      {/* main section */}
-      <div className="w-[250px] h-[250px] sm:w-[500px] sm:h-[500px]">
-      { isLoading ? (
-        <div className="h-full flex justify-center items-center">
+      {isLoading ? (
+        <div className="h-full flex justify-center items-center pb-20">
           <RingLoader color="#E6CF45" />
         </div>
       ) : (
-        <motion.div 
-      {...OPACITY_ANIMATION}
-      className="flex flex-col items-center justify-center gap-1">
-        <video
-          ref={videoRef}
-          src="/assets/fries.mov"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          className={`${isLoading ? 'hidden' : ''}`} // Hide the video initially using the 'hidden' class
-        />
-      </motion.div>
+        <motion.div {...OPACITY_ANIMATION} className="h-full flex flex-col items-center justify-between">
+          <div className="w-[250px] h-[250px] sm:w-[450px] sm:h-[450px] pt-20">
+            <video
+              ref={videoRef}
+              src="/assets/fries.mov"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              className={`${isLoading ? 'hidden' : ''}`} // Hide the video initially using the 'hidden' class
+            />
+          </div>
+          <div className="flex items-center gap-3">
+            <a
+              href="https://twitter.com/MickeyDegods"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-white/40 w-[60px] h-[60px] flex items-center justify-center
+              hover:scale-110 transition-transform ease-in-out duration-300 cursor-pointer"
+            >
+                <TwitterIcon fill="white" />
+            </a>
+            <a
+              href="https://discord.gg/UwAUPgzgmZ"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-white/40 w-[60px] h-[60px] flex items-center justify-center
+              hover:scale-110 transition-transform ease-in-out duration-300 cursor-pointer"
+            >
+                <DiscordIcon fill="white" />
+            </a>
+          </div>
+          <div className="text-white/40 text-sm pb-28 sm:pb-5 pt-5">
+            © 2023 Mickey DeGods
+          </div>
+        </motion.div>
       )}
-      </div>
-      
-
-      {/* socials */}
-      <div className="flex items-center gap-3">
-        <a
-          href="https://twitter.com/MickeyDegods"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="border border-white/40 w-[60px] h-[60px] flex items-center justify-center
-          hover:scale-110 transition-transform ease-in-out duration-300 cursor-pointer"
-        >
-            <TwitterIcon fill="white" />
-        </a>
-        <a
-          href="https://discord.gg/UwAUPgzgmZ"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="border border-white/40 w-[60px] h-[60px] flex items-center justify-center
-          hover:scale-110 transition-transform ease-in-out duration-300 cursor-pointer"
-        >
-            <DiscordIcon fill="white" />
-        </a>
-      </div>
-      <div className="text-white/40 text-sm pb-28 sm:pb-5 pt-5">© 2023 Mickey DeGods</div>
     </main>
   );
 };
