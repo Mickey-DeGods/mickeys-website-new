@@ -39,7 +39,7 @@ const Home = () => {
   }, []);
 
   return (
-    <main className="sm:h-screen w-screen flex flex-col items-center justify-between bg-primary">
+    <main className="h-screen w-screen pb-8 flex flex-col items-center justify-between bg-primary">
       <DocumentHead
         title="Mickey DeGods"
         description="Mickey DeGods: New Website Coming Soon"
